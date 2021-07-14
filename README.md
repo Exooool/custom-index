@@ -1,4 +1,4 @@
-# blog
+# custom-index
 
 > A Vue.js project
 

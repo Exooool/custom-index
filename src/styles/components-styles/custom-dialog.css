@@ -318,7 +318,7 @@
   background-color: rgba(21, 21, 21, 0.45);
   line-height: 100px;
   text-align: center;
-  font-size: 30px;
+  font-size: 30px !important;
   color: white;
 }
 

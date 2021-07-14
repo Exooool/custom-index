@@ -54,7 +54,7 @@ export default {
 .missionBox {
   position: relative;
   padding: 5px 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all .1s ease-in-out;
   height: 20px;
   line-height: 20px;
   cursor: pointer;
@@ -92,7 +92,23 @@ export default {
   margin: 0 auto;
 }
 
-.addMission .button{
-  
+.addMission button{
+  position: absolute;
+  left: calc(50% - 100px);
+  height: 100%;
+  width: 200px;
+  border-radius: 5px;
+  background-color: #0b8793;
+  color: white;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.addMission button:hover{
+  background-color: #109ca8;
+}
+
+.addMission button:active{
+  background-color: #0b8793;
 }
 </style>

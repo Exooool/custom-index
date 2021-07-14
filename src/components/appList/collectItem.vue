@@ -39,7 +39,7 @@ export default {
   margin-top: 10px;
   margin-bottom: 40px;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  transition: all .05s ease-in-out;
 }
 
 .collect-item:hover{
