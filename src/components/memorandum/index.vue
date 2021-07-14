@@ -92,7 +92,7 @@ export default {
   margin: 0 auto;
 }
 
-.addMission button{
+.addMission .button{
   
 }
 </style>
