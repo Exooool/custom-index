@@ -1,0 +1,17 @@
+:root{
+  --bg-w-pure: rgb(255, 255, 255);
+  --bg-w-235: rgb(235,235,235);
+  --theme-color-green: #70c000;
+  --theme-color-cyanblue:#274a78;
+  --theme-color-purple: #b8b5ff;
+  --theme-color-darkpurple:#7868e6;
+  --theme-color-orange: #F27121;
+  --theme-color-yellow: #ffd900;
+  --theme-color-pink: #eaafc8;
+  --theme-color-red: #FF4B2B;
+  --theme-color-skyblue: #2ca9e1;
+  --theme-color-moonlight: #eaf4fc;
+  --theme-color-tea: #965042;
+  --theme-color: rgb(255, 255, 255);
+  --theme-color-font: rgb(0, 0, 0);
+}

@@ -1,0 +1,215 @@
+.headerWrapper{
+  height: 0 !important;
+  z-index: 100;
+}
+
+.blogHeader{
+  position: relative;
+  padding: 0px 10px;
+  margin: 0px 150px;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+
+.blogHeader-fixed{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 10px;
+  transform: translateY(-90px);
+  transition: all .3s ease-in-out;
+  box-shadow: rgb(31 29 28 / 8%) 0px 8px 8px -4px, rgb(31 29 28 / 8%) 0px 8px 24px 0px, rgb(31 29 28 / 8%) 0px 12px 20px 2px;
+  background-color: white;
+}
+
+.blogHeader-fixed-show{
+  transform: translateY(0px);
+}
+
+.headerWrapper .logo{
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+.blogHeader .logo:hover{
+  transform:  translateY(-5px) scale(1.05);
+}
+
+.blogHeader .menu{
+
+}
+
+.blogHeader .functionBar{
+
+}
+
+.functionBar .functionItem{
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
+  height: 42px;
+  position: relative;
+  width: 50px;
+  transform: translateY(0px);
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  animation: slowdown 1s ease-in-out;
+  
+}
+
+.functionBar .functionItem-dark{
+  color: black;
+}
+
+@keyframes slowdown{
+  from {transform: translateY(-80px);}
+  to {transform: translateY(0px);} 
+}
+
+.functionItem::before{
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.functionItem-dark::before{
+  background-color: black !important;
+}
+
+.functionItem::after{
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  left: -150%;
+  background-color: #ff4f00;
+  transition: all 0.3s ease-in-out;
+}
+
+.functionBar .functionItem:hover::before{
+  transform: translateX(100%);
+}
+
+.functionBar .functionItem:hover::after{
+  transform: translateX(150%);
+}
+
+
+.functionItem .itemInner{
+  display: block;
+  position: relative;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.functionBar .functionItem:hover .itemInner{
+  transform: translateY(-5px);
+}
+
+/* 手机端导航栏适配 */
+.mobMenu{
+  display: none;
+  padding: 20px 0px;
+  transition: all .3s ease-in-out;
+}
+
+.mobMenu .icon-menu{
+  font-size: 30px;
+  padding: 20px;
+}
+
+.mobNavBox{
+  position: fixed;
+  padding-top: 10px;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  right: 0;
+  bottom: 0;
+  transition: all .3s ease-in-out;
+  background-color: white;
+  line-height: 36px;
+  z-index: 100;
+  display: none;
+}
+
+.mobNavBox .closeBtn{
+  display: flex;
+  font-family: Euclid, san-serif;
+  align-items: center;
+  height: 32px;
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  margin: 0px;
+  color: rgba(31, 29, 28, 0.5);
+  border-bottom: thin solid rgba(31, 29, 28, 0.5);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.mobNav{
+  list-style: none;
+  padding-left: 32px;
+  font-size: 34px;
+  height: 40px;
+}
+
+.mobNav .mobNavItem{
+  margin-bottom: 24px;
+  position: relative;
+  font-weight: 700;
+}
+
+.mobNavItem .itemInner{
+  display: inline-flex;
+  flex-flow: column nowrap;
+  text-decoration: none;
+  color: black;
+}
+
+.mobNavItem .underline{
+  width: 100%;
+  height: 3px;
+  background: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .blogHeader{
+    margin: 0 70px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .blogHeader{
+    margin: 0 20px;
+  }
+  .blogHeader .functionBar{
+    display: none;
+  }
+  .mobMenu{
+    display: block;
+  }
+
+}

@@ -1,0 +1,320 @@
+:root{
+  --bg-w-pure: rgb(255, 255, 255);
+  --bg-w-235: rgb(235,235,235);
+  --theme-color-green: #70c000;
+  --theme-color-cyanblue:#274a78;
+  --theme-color-purple: #b8b5ff;
+  --theme-color-darkpurple:#7868e6;
+  --theme-color-orange: #F27121;
+  --theme-color-yellow: #ffd900;
+  --theme-color-pink: #eaafc8;
+  --theme-color-red: #FF4B2B;
+  --theme-color-skyblue: #2ca9e1;
+  --theme-color-moonlight: #eaf4fc;
+  --theme-color-tea: #965042;
+  --theme-color: rgb(255, 255, 255);
+  --theme-color-font: rgb(0, 0, 0);
+}
+
+
+.custom-box {
+  height: 100%;
+  width: 100%;
+}
+
+.custom-box .bgImg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  /* background-position: center;
+  background-size: cover; */
+  object-fit: cover;
+  backdrop-filter: blur(10px);
+  transition: all .3s ease-in-out;
+}
+
+/* 视频壁纸样式 */
+.dynamicWallPaper{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  display: none;
+  transition: all .3s ease-in-out;
+}
+
+
+.main-mask{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 100px 1px black;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  z-index: -2;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-mask-visible{
+  opacity: 1;
+  visibility: visible;
+  z-index: -2;
+}
+
+
+
+.custom-main {
+  position: absolute;
+  height: calc(100% - 220px);
+  width: 100%;
+  top: 120px;
+}
+
+
+
+
+
+/* 用户和设置菜单弹出按钮 */
+
+.custom-btnbox {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.custom-btnbox i {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.custom-btnbox .userbtn {
+  color: rgb(170, 170, 170);
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
+  display: inline-block;
+}
+
+.custom-btnbox .userbtn:hover {
+  color: rgb(200, 200, 200);
+  transform: scale(1.2);
+}
+
+.custom-btnbox .settingbtn {
+  color: rgb(170, 170, 170);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
+  display: inline-block;
+}
+
+.custom-btnbox .settingbtn:hover {
+  color: rgb(200, 200, 200);
+  transform: rotateZ(90deg);
+}
+
+/* 设置菜单 */
+
+.customSettingMenu {
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  right: 60px;
+  top: 65px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: scale(0.7);
+  visibility: hidden;
+}
+
+.settingMenuList {
+  width: 160px;
+}
+.settingMenuItem {
+  padding: 12px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.settingMenuItem:hover {
+  background-color: rgba(128, 128, 128, 0.4);
+}
+
+/* 用户菜单 */
+.customUserMenu {
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  right: 100px;
+  top: 65px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: scale(0.7);
+  visibility: hidden;
+  z-index: 100;
+}
+
+
+
+.userMenuList {
+  width: 180px;
+}
+
+.userMenuItem {
+  display: flex;
+  padding: 12px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.userMenuItem-userInfo{
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.userMenuItem-userInfo .userImg{
+  height: 40px;
+  width: 40px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-color: #274a78;
+}
+
+.userMenuItem-userInfo .userName{
+  font-size: 13px;
+}
+
+.userMenuItem:hover {
+  background-color: rgba(128, 128, 128, 0.4);
+}
+
+
+/* 底部备案样式 */
+
+
+.indexFooter{
+  position: absolute;
+  bottom: 10px;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.indexFooter .links{
+  color: rgba(255, 255, 255, 0.336);
+  transition: all 0.2s ease-in-out;
+  font-size: 14px;
+  display: flex;
+  margin: 0px 5px;
+}
+
+.indexFooter .links:hover{
+  color: white;
+}
+
+
+/* 盒子显示通用样式 */
+.box-visible {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+/* 测试用按钮 */
+.testbutton{
+  z-index: 1000000;
+  background-color: white;
+  position: fixed;
+}
+
+/* 深色主题模式 */
+.darkTheme{
+  --theme-color: #383c3c;
+  --theme-color-font: rgb(255,255,255);
+}
+
+@media screen and (max-width:600px){
+  .custom-btnbox {
+    right: 40px;
+  }
+  .customUserMenu{
+    right: 80px;
+  }
+  .customSettingMenu{
+    right: 40px;
+  }
+  .addItem-main .webGroup{
+    overflow-y: scroll;
+  }
+  .indexFooter{
+    display: none;
+  }
+}
+
+@media screen and (max-width:550px){
+  .custom-input:hover,
+  .custom-input:focus{
+    width: 200px;
+  }
+  .custom-input{
+    width: 150px;
+  }
+  footer{
+    display: none;
+  }
+  /* 更改图片偏好中样式 */
+  .customImageBox{
+    flex-direction: column;
+  }
+  .customImageBox .uploadBox{
+    height: 120px !important;
+    width: 180px !important;
+  }
+  .customImageBox .imgaeInfo{
+    margin-left: 0px !important;
+  }
+  .selectPitcureBox .selectPitcureItem{
+    width: 45% !important;
+  }
+}
+
+@media screen and (max-width:450px){
+  .webGroup .webGroupItem{
+    flex-direction: column;
+  }
+  .webGroupItem .webInfo{
+    width: auto;
+    margin-bottom: 10px;
+  }
+  .webGroupItem .webIconInfo{
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  footer{
+    display: none;
+  }
+  
+}
+

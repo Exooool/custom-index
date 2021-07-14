@@ -1,0 +1,382 @@
+:root{
+  --bg-w-pure: rgb(255, 255, 255);
+  --bg-w-235: rgb(235,235,235);
+  --theme-color-green: #70c000;
+  --theme-color-cyanblue:#274a78;
+  --theme-color-purple: #b8b5ff;
+  --theme-color-darkpurple:#7868e6;
+  --theme-color-orange: #F27121;
+  --theme-color-yellow: #ffd900;
+  --theme-color-pink: #eaafc8;
+  --theme-color-red: #FF4B2B;
+  --theme-color-skyblue: #2ca9e1;
+  --theme-color-moonlight: #eaf4fc;
+  --theme-color-tea: #965042;
+  --theme-color: rgb(255, 255, 255);
+  --theme-color-font: rgb(0, 0, 0);
+}
+
+/* 弹窗 */
+.custom-cover{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.custom-dialog{
+  height: 500px;
+  width: 600px;
+  top: calc(50% - 250px);
+  left: calc(50% - 300px);
+  border-radius: 15px;
+  background-color: white;
+  position: absolute;
+  /* padding: 40px 70px; */
+}
+
+.custom-dialog .title{
+  font-size: 28px;
+  position: relative;
+  top: 40px;
+  left: 70px;
+}
+
+.custom-dialog .dialog-delete{
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.custom-dialog .main{
+  position: relative;
+  top: 60px;
+  left: 70px;
+  height: 350px;
+  width: 460px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+/* 滚动条样式 */
+.custom-dialog .main::-webkit-scrollbar{
+  width: 5px;
+}
+
+.custom-dialog .main::-webkit-scrollbar-thumb{
+  background-color: rgb(204, 204, 204,0.6);
+}
+
+/* subTitle副标题 */
+.custom-dialog .subTitle{
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+.custom-dialog .setGroup{
+  position: relative;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 25px;
+  padding-right: 15px;
+}
+
+
+.setGroupItem{
+  padding-bottom: 25px;
+  font-size: 13px;
+  position: relative;
+}
+
+/* 选项说明 */
+.setCaption{
+  font-size: small;
+  transition: .25s;
+}
+
+/* 选项描述 */
+.setComment{
+  color: rgba(0,0,0,.5);
+  position: relative;
+  display: block;
+  font-size: 11px;
+  width: calc(100% - 60px);
+}
+
+/* 主题颜色选项 */
+.custom-dialog .colorBox{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 25px;
+}
+
+.colorBox .colorBoxItem{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0px 5px ;
+  border-radius: 50%;
+  transition: all .1s ease-in-out;
+  cursor: pointer;
+}
+
+.colorBoxItem:hover{
+  transform: scale(1.5);
+}
+
+.colorBox .colorBoxItemChecked{
+  border: solid 1px white;
+}
+
+.resetBox{
+  position: relative;
+}
+
+.resetBox .resetBtn{
+  padding: 0px 15px;
+  background-color: rgb(200, 200, 200);
+  border-radius: 5px;
+  height: 40px;
+  width: 70px;
+  line-height: 40px;
+  margin-right: 10px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.resetBtn:hover{
+  background-color: #FF4B2B;
+}
+
+
+/* .setBox .setTitle{
+
+} */
+
+.setBox .setInfo{
+  color: grey;
+  font-size: 12px;
+  width: 100%;
+  margin: 10px 5px;
+}
+
+
+/* 添加网址弹窗 */
+.addItem-main{
+  height: 80%;
+}
+
+.addItem-main .webGroup{
+  height: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+
+.webGroup .webGroupItem{
+  padding: 15px 20px;
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.1) ;
+}
+
+
+.webGroupItem .webInfo{
+  font-size: 14px;
+  width: 20%;
+}
+
+.webGroupItem input{
+  font-size: 14px;
+}
+
+
+.addItem-main .webAddBtn{
+  width: 50%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  background-color:  #0b8793;
+  position: relative;
+  left: 25%;
+  cursor: pointer;
+}
+
+/* 自定义图片栏目 */
+.customImageBox{
+  margin-bottom: 10px;
+  position: relative;
+}
+
+
+.customImageBox .uploadBox{
+  position: relative;
+  overflow: hidden;
+  height: 100px;
+  width: 140px;
+  line-height: 100px;
+  margin-top: 15px;
+  margin-right: 10px;
+  background-color: rgba(0,0,0,.05);
+  border-radius: 5px;
+  color: rgba(0,0,0,.5);
+  text-align: center;
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+}
+
+.uploadBox i{
+  font-size: 36px;
+}
+
+.customImageBox .imgaeInfo{
+  margin-top: 15px;
+  margin-left: 20px;
+  display: inline-block;
+  position: absolute;
+}
+
+
+.imgaeInfo span:first-child{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.imgaeInfo .subtitle{
+  font-size: 14px;
+  margin-top: 5px;
+  color: rgba(128, 128, 128);
+}
+
+.imgaeInfo .selectIconBtn{
+  width: 100px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 5px;
+  background-color:  #0b8793;
+  cursor: pointer;
+}
+
+/* 默认图片和静态图片样式 */
+.selectPitcureBox{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.selectPitcureBox .selectPitcureItem{
+  height: 100px;
+  width: 30%;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.selectPitcureItem img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imgMask{
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(21, 21, 21, 0.2);
+  transition: all 0.25s ease-in-out;
+}
+
+.selectMask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background-color: rgba(21, 21, 21, 0.45);
+  line-height: 100px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+
+.selectPitcureItem:hover .imgMask{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 搜索引擎页样式 */
+.searchEngGroup{
+  margin-bottom: 10px;
+}
+
+.searchEngGroupItem{
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  border-bottom: 2px solid rgb(223, 220, 220);
+  position: relative;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.searchEngGroupItem:hover{
+  background-color: rgba(21, 21, 21, 0.05);
+}
+
+/* .searchEngGroupItem .engName{
+
+} */
+
+.searchEngGroupItem .engUrl{
+  position: absolute;
+  left: 130px;
+  font-size: 13px;
+}
+
+.searchEngGroupItem .customEngUrl{
+  position: absolute;
+  left: 130px;
+  font-size: 13px;
+  background: none;
+}
+
+/* 菜单显示 */
+.box-visible {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+@media screen and (max-width:630px){
+  .custom-dialog{
+    width: 90%;
+    left: 5%;
+  }
+  .custom-dialog .main{
+    width: 80%;
+    left: 10%;
+  }
+}

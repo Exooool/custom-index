@@ -1,0 +1,258 @@
+.unify_box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-image: linear-gradient(45deg, #360033, #0b8793);
+  justify-content: center;
+  align-items: center;
+}
+
+/* .login_box .left {
+  width: 60%;
+  height: 100%;
+  background-image: linear-gradient(#fcf8ec, #d0e8f2, #79a3b1, #456268);
+  opacity: 0.6;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+} */
+
+.unify_box .main {
+  width: 500px;
+  height: 400px;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* 统一标题样式 */
+.unify_box .unify_title {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.unify_box .unify_title .t1 {
+  font-size: 26px;
+  color: #0b8793;
+  font-weight: bold;
+}
+
+.unify_box .unify_title .t2 {
+  font-size: 10px;
+  color: rgb(177, 175, 186);
+}
+
+/* 3d翻转样式 */
+.main .box {
+  background-color: #dae2f8;
+  border-radius: 5px;
+  transition: all 1s ease-out;
+  backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/* .main .b1 {
+} */
+
+.main .b2 {
+  transform: rotateY(-180deg);
+}
+
+.box_float {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(50px);
+  position: relative;
+}
+
+/* 输入框样式 */
+.unify_input {
+  width: 65%;
+  margin: 5px 0;
+  transition: 0.2s;
+  border-radius: 5px;
+  padding: 16px 15px;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+  display: flex;
+}
+
+.unify_input i {
+  color: #0b8793;
+}
+
+.unify_input input {
+  color: black;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  flex: 1 1;
+  margin-left: 20px;
+
+}
+
+/* 注册登录跳转 */
+.jump-log {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
+}
+
+.jump-forget {
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.jump-forget:hover {
+  color: #0b8793;
+}
+
+.jump-reg {
+  position: absolute;
+  bottom: 30px;
+}
+
+.jump {
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.jump a {
+  cursor: pointer;
+}
+
+.jump a:hover {
+  color: #0b8793;
+}
+
+/* 设置input-placeholder */
+.unify_input::-webkit-input-placeholder {
+  color: rgb(177, 175, 186);
+}
+
+/* 
+.unify_input:hover {
+} */
+
+.unify_btn {
+  width: auto;
+  margin-top: 20px;
+  padding: 10px 25px;
+  color: #dae2f8;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #0b8793;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0px #0b8793;
+  transition: all 0.5s;
+}
+
+.unify_btn:hover {
+  box-shadow: none;
+}
+
+/*  */
+.mobile-jump {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.mobile-jump-box {
+  background-color: #dae2f8;
+  position: absolute;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 10px;
+  width: calc(100% - 20px);
+  display: flex;
+  bottom: 0;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px -2px 6px 0 #dae2f8;
+}
+
+.mobile-jump .jump1 {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-jump .jump2 {
+  justify-content: center;
+  align-items: center;
+  bottom: -50px;
+}
+
+/* 错误提示框 */
+.inputErrorTip{
+  position: absolute;
+  text-align: center;
+  bottom: -130px;
+  height: 20px;
+  line-height: 20px;
+  width: 260px;
+  left: calc(50% - 130px);
+  padding: 20px 0px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.568);
+  color: black;
+  font-size: 16px;
+  
+  visibility: hidden;
+}
+
+/* .inputErrorTip .tipText{
+  
+} */
+
+.inputErrorTip-show{
+  bottom: -100px;
+  visibility: visible;
+  animation: popup 0.8s ease-in-out;
+}
+
+@keyframes popup{
+  0%{bottom: -120px;}
+  70%{bottom: -95px;}
+  80%{bottom: -100px;}
+  90%{bottom: -98px;}
+  100%{bottom: -100px;}
+}
+
+
+/* 各种分辨率适配 */
+/* 手机宽度小于560px */
+@media screen and (max-width: 560px) {
+  .unify_box .main {
+    width: 90%;
+    height: 55%;
+  }
+  .jump-log {
+    display: none;
+  }
+  .jump-reg {
+    display: none;
+  }
+  .mobile-jump {
+    display: block;
+  }
+}
