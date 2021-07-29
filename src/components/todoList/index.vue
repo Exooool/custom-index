@@ -1,45 +1,61 @@
 <template>
-  <div class="memorandumBox">
+  <div class="todoListBox">
     <span class="dateSelector">今日计划</span>
+    <i class="iconfont icon-menu"></i>
     <div class="missionList">
       <div class="missionBox" v-for="(item, i) in 8" :key="i">
         <span>完成任务</span>
-        <input type="checkbox" name="" id="" />
+        <input  type="checkbox" name="" id="" />
       </div>
       <div class="addMission">
         <button><i class="iconfont icon-add"></i></button>
       </div>
     </div>
+
+    <Setting />
   </div>
 </template>
 
 <script>
+import Setting from './Setting';
 export default {
   data () {
     return {
-
+      
     }
   },
   methods: {
 
+  },
+  components:{
+    Setting
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.memorandumBox {
+.todoListBox {
   position: fixed;
   height: 200px;
   width: 280px;
   background-color: white;
   border-radius: 10px;
-  left: 20px;
+  right: 20px;
   top: 10px;
   padding: 10px;
   box-sizing: border-box;
+
+  .icon-menu{
+    position: absolute;
+    font-size: 20px;
+    top: 16px;
+    right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 
-.memorandumBox .dateSelector {
+.todoListBox .dateSelector {
   font-size: 18px;
   font-weight: bold;
   display: block;
@@ -80,7 +96,7 @@ export default {
 }
 
 .missionBox:hover {
-  box-shadow: -5px 2px 10px 1px rgba(128, 128, 128, 0.363);
+  background-color: rgb(235, 235, 235);
 }
 
 .addMission{
@@ -90,19 +106,20 @@ export default {
   left: 0;
   width: 100%;
   margin: 0 auto;
+
+  button{
+    position: absolute;
+    left: calc(50% - 100px);
+    height: 100%;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #0b8793;
+    color: white;
+    cursor: pointer;
+    transition: .1s;
+  }
 }
 
-.addMission button{
-  position: absolute;
-  left: calc(50% - 100px);
-  height: 100%;
-  width: 200px;
-  border-radius: 5px;
-  background-color: #0b8793;
-  color: white;
-  cursor: pointer;
-  transition: .1s;
-}
 
 .addMission button:hover{
   background-color: #109ca8;

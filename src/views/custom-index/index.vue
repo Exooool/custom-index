@@ -130,8 +130,8 @@
     <!-- 弹出层 -->
     <popups/>
 
-    <!-- 备忘录 -->
-    <memorandum />
+    <!-- todoList -->
+    <!-- <todoList /> -->
 
     <footer class="indexFooter">
       <a
@@ -157,7 +157,7 @@ import timeClock from '@/components/time-clock'
 import customInput from '@/components/custom-input'
 import weather from '@/components/weather'
 import popups from '@/components/popups'
-import memorandum from '@/components/memorandum'
+import todoList from '@/components/todoList'
 
 export default {
   data () {
@@ -278,7 +278,7 @@ export default {
     weather,
     timeClock,
     popups,
-    memorandum
+    todoList
   },
   watch: {
     generalSet: {
@@ -488,13 +488,17 @@ export default {
   
 
     // 第一次加载页面，如果没有缓存就设置缓存
-    if (localStorage.getItem("generalSet") == null) {
+    if (localStorage.getItem("generalSet") === null) {
+      // 设置基础设置JSON格式的缓存
       localStorage.setItem("generalSet", JSON.stringify(this.generalSet));
+      localStorage.setItem("appList", JSON.stringify(this.appList));
       this.urlCompValue(this.generalSet.perferenceBg);
     } else {
-      let data = JSON.parse(localStorage.getItem("generalSet"));
-      this.generalSet = data;
-      this.urlCompValue(data.perferenceBg);
+      let generalSet = JSON.parse(localStorage.getItem("generalSet"));
+      let appList = JSON.parse(localStorage.getItem("appList"));
+      this.generalSet = generalSet;
+      this.appList = appList;
+      this.urlCompValue(generalSet.perferenceBg);
       // console.log(data)
     }
 

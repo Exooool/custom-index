@@ -4,11 +4,13 @@
       <div class="collect-list" ref="collectlist">
         <CollectItem
           v-for="(item, i) in appList"
+          :appList="appList"
           :appName="item.appName"
           :appIcon="item.appIcon"
           :bgColor="item.bgColor"
           :iconColor="item.iconColor"
           :href="item.href"
+          :index="i"
           :key="i"
         />
 
@@ -24,7 +26,7 @@
       
       </div>
       
-      <AddCollectItem :isvisible="addShow" @close="addShow=false"/>
+      <AddCollectItem :isvisible="addShow" @close="addShow=false" :appList="appList"/>
     </div>
     
   </div>
@@ -45,9 +47,13 @@ export default {
     AddCollectItem
   },
   methods: {
+    // 显示添加
    showAddDialog(){
      this.addShow=true
    } 
+  },
+  mounted () {
+    
   }
 }
 </script>

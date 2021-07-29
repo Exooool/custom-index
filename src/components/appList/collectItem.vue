@@ -2,7 +2,8 @@
   <label
     class="collect-item"
     :style="'background-color:' + bgColor"
-    @click="toWebsite"
+    @click="toWebsite()"
+    @click.right="showEdit()"
   >
     <a :class="'iconfont collect-icon icon-' + appIcon" :style="'color:' + iconColor"></a>
     <span class="collect-title">{{ appName }}</span>
@@ -11,15 +12,31 @@
 
 <script>
 export default {
-  props: ['appName', 'bgColor', 'appIcon', 'href','iconColor'],
+  props: ['appName', 'bgColor', 'appIcon', 'href','iconColor','index','appList'],
   data () {
     return {
     }
   },
   methods: {
+    // 跳转至指定的网站
     toWebsite () {
       console.log('collect-item click: + href='+this.href)
       if(this.href != null){window.open(this.href)}
+    },
+    // 显示编辑菜单
+    showEdit () {
+      
+      if(this.index < 5){
+        alert("暂无法删除默认网站");
+      }else{
+        let res = confirm("你确定要删除嘛");
+        if(res===true){
+          this.appList.splice(this.index,1);
+          localStorage.setItem("appList", JSON.stringify(this.appList));
+        }
+      }
+      
+      console.log(this.index);
     }
   }
 
