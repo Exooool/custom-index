@@ -4,15 +4,16 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state:{
-    token: localStorage.getItem('token') ? localStorage.getItem('token') : ''
+  state: {
+
   },
-  mutations:{
-    setToken(){
+  getters:{
 
-    },
-    delToken(){
-
-    }
+  },
+  mutations: {
+      
+  },
+  actions: {
+      
   }
 })

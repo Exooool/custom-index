@@ -155,6 +155,6 @@ export default {
 }
 </script>
 
-<style>
-@import url('../../styles/components-styles/custom-dialog.css');
+<style lang="scss" scoped>
+@import "../../styles/components-styles/custom-dialog.scss";
 </style>

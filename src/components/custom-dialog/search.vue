@@ -10,45 +10,40 @@
       <div class="main">
         <span class="subTitle">主搜索引擎</span>
         <ul class="searchEngGroup">
+          <!-- urlItemMask样式表示当前引擎被选择时的li元素的样式 -->
           <li
-            class="searchEngGroupItem"
+            :class="'searchEngGroupItem ' + (item1.engUrl == selectEngUrl ? 'urlItemMask':'')"
             v-for="(item1, i) in searchEngList[0]"
             :key="i"
-            @click="engUrlChange($event)"
-            :data-url="item1.engUrl"
+            @click.stop="engUrlChange(item1.engUrl)"
+            :title="item1.engUrl"
           >
+            <!-- 搜索引擎名字 -->
             <span class="engName">{{ item1.engName }}</span>
-            <span class="engUrl">{{ item1.engUrl }}</span>
-            <i
-              class="iconfont icon-true searchTrueIcon"
-              :style="(item1.engUrl == selectEngUrl ? '':'display:none')"
-            ></i>
           </li>
         </ul>
 
         <span class="subTitle">次搜索引擎</span>
         <ul class="searchEngGroup">
           <li
-            class="searchEngGroupItem"
+            :class="'searchEngGroupItem ' + (item2.engUrl == selectEngUrl ? 'urlItemMask':'')"
             v-for="(item2, j) in searchEngList[1]"
             :key="j"
-            @click="engUrlChange($event)"
-            :data-url="item2.engUrl"
+            @click="engUrlChange(item2.engUrl)"
+            :title="item2.engUrl"
           >
+            <!-- 搜索引擎名字 -->
             <span class="engName">{{ item2.engName }}</span>
-            <span class="engUrl">{{ item2.engUrl }}</span>
-            <i
-              class="iconfont icon-true searchTrueIcon"
-              :style="(item2.engUrl == selectEngUrl ? '':'display:none')"
-            ></i>
           </li>
         </ul>
 
         <span class="subTitle">自定义搜索引擎</span>
         <ul class="searchEngGroup">
-          <li class="searchEngGroupItem">
+          <li class="searchEngGroupItem customSearch" @click.stop="unfoldInput()">
             <span class="engName">自定义</span>
-            <input class="customEngUrl" />
+            <div class="customEngUrlInput" ref="customEngUrlInput">
+              <input placeholder="请在这里输入搜索引擎地址" @input="customUrlChange($event)"/>
+            </div>
           </li>
         </ul>
       </div>
@@ -63,12 +58,12 @@ export default {
   data () {
     return {
       searchEngList: [
-        [{ engName: '百度', engUrl: 'https://www.baidu.com/s?ie=utf-8&word=' },
-        { engName: '必应', engUrl: 'https://cn.bing.com/search?q=' },
-        { engName: '谷歌', engUrl: 'https://www.google.cn/search?q=' }],
-        [{ engName: '360搜索', engUrl: 'https://www.so.com/s?q=' },
-        { engName: '搜狗搜索', engUrl: 'https://www.sogou.com/web?query=' }]
-      ]
+        [{ engName: 'baidu', engUrl: 'https://www.baidu.com/s?ie=utf-8&word=' },
+        { engName: 'bing', engUrl: 'https://cn.bing.com/search?q=' },
+        { engName: 'google', engUrl: 'https://www.google.cn/search?q=' }],
+        [{ engName: '360', engUrl: 'https://www.so.com/s?q=' },
+        { engName: 'sougou', engUrl: 'https://www.sogou.com/web?query=' }]
+      ],
       
     }
   },
@@ -77,27 +72,38 @@ export default {
   },
   methods: {
     closeDialog (e) {
-      let dialog = e.target.dataset.dialog
-      document.getElementById(dialog).style = "opacity: 0;visibility: hidden;"
+      let dialog = e.target.dataset.dialog;
+      document.getElementById(dialog).style = "opacity: 0;visibility: hidden;";
     },
-    engUrlChange(e){
-      let tempUrl
-      if(e.toElement.localName=="li"){
-        console.log("改变的变量："+e.target.dataset.url)
-        tempUrl = e.target.dataset.url
+    // 浏览器引擎设置
+    engUrlChange(engUrl){
+      this.$emit("changeEngUrl", engUrl);
+    },
+    // 展开自定义搜索引擎输入框
+    unfoldInput(){
+      this.$refs.customEngUrlInput.classList.add("unfold");
+    },
+    // 自定义引擎输入框change函数
+    customUrlChange(e){
+      let engUrl = e.target.value;
+      // console.log(engUrl);
+      // 网址检验(正则表达式)
+      var webRegex=/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/;
+      // console.log(webRegex.test(engUrl));
+      if(!webRegex.test(engUrl)){
+        this.$refs.customEngUrlInput.style="background-color:#FF4B2B";
       }else{
-        console.log("改变的变量："+e.target.parentNode.dataset.url)
-         tempUrl = e.target.parentNode.dataset.url
+        this.$refs.customEngUrlInput.style="background-color:#70c000";
+        this.engUrlChange(engUrl);
+        
       }
-      this.$emit("changeEngUrl", tempUrl)
-
     }
   }
 }
 </script>
 
-<style>
-@import url('../../styles/components-styles/custom-dialog.css');
+<style lang="scss" scoped>
+@import "../../styles/components-styles/custom-dialog.scss";
 .searchTrueIcon {
   color: rgb(1, 170, 1);
   position: absolute;

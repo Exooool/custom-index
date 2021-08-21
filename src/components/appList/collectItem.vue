@@ -27,7 +27,7 @@ export default {
     showEdit () {
       
       if(this.index < 5){
-        alert("暂无法删除默认网站");
+        // alert("暂无法删除默认网站");
       }else{
         let res = confirm("你确定要删除嘛");
         if(res===true){
@@ -36,14 +36,14 @@ export default {
         }
       }
       
-      console.log(this.index);
+      // console.log(this.index);
     }
   }
 
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .collect-item{
   position: relative;
   width: 90px;

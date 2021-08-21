@@ -35,8 +35,8 @@ export default {
 }
 </script>
 
-<style scoped>
-@import url('../../styles/icon.css');
+<style lang="scss" scoped>
+@import "../../styles/icon.css";
 
 .popupBox{
   display: none;

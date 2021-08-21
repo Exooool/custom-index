@@ -9,6 +9,7 @@
       ></i>
 
       <span class="title">添加网站</span>
+      <span class="tips">（右键可删除已添加的网站）</span>
 
       <div class="addWebInfo">
         <div class="infoItem">
@@ -37,7 +38,8 @@ export default {
   props: ['isvisible','appList'],
   data () {
     return {
-      
+      // true表示点击后 addWeb()可执行
+      addWebFlag: true,
     }
   },
   methods: {
@@ -48,16 +50,30 @@ export default {
     },
     // 添加web
     addWeb(){
-      let webName = this.$refs.webName;
-      let webUrl = this.$refs.webUrl;
-      let arry = {
-          appName: webName.value,
-          href: webUrl.value
-        };
-      this.appList.push(arry);
-      localStorage.setItem("appList", JSON.stringify(this.appList));
-      console.log(this.appList);
-      this.clear();
+      if(this.addWebFlag){
+        this.addWebFlag=false;
+        let webName = this.$refs.webName;
+        let webUrl = this.$refs.webUrl;
+        if(webName.value===""||webUrl.value===""){
+          alert("输入请不要为空！")
+        }else{
+          let arry = {
+            appName: webName.value,
+            href: webUrl.value
+            };
+          this.appList.push(arry);
+          localStorage.setItem("appList", JSON.stringify(this.appList));
+          console.log(this.appList);
+          this.close();
+          
+        }
+
+        // 设置500ms延迟防止重复点击
+        setTimeout(()=>{
+          this.addWebFlag=true;
+        }, 500)
+      }
+      
     },
     // 清空输入框
     clear(){
@@ -113,6 +129,14 @@ export default {
     left: 70px;
     top: 25px;
     font-size: 18px;
+  }
+
+  .tips{
+    position: absolute;
+    left: 60px;
+    top: 50px;
+    font-size: 12px;
+    color: grey;
   }
 
   .addWebInfo{

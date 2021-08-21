@@ -170,12 +170,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 天气弹窗样式 */
 .weatherBox{
   display: flex;
   flex-direction: column;
-  background-color: rgb(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.7);
   height: 500px;
   width: 290px;
   border-radius: 5px;
@@ -286,12 +286,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  box-shadow: rgb(24 24 24 / 5%) 1px 1px 20px 0px;
+  box-shadow: rgba(24, 24, 24, .05) 1px 1px 20px 0px;
   transition: all 100ms ease-in-out;
 }
 
 .afterWeatherForecast .afterForecastItem:hover{
-  box-shadow: rgb(24 24 24 / 20%) 1px 1px 20px 0px;
+  box-shadow: rgba(24, 24, 24, .2) 1px 1px 20px 0px;
 }
 
 .afterForecastItem .weatherIcon{

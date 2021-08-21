@@ -20,7 +20,7 @@
 
     <div class="custom-main">
       <!-- 时钟 -->
-      <timeClock />
+      <timeClock :isFlicker="generalSet.timeDisplayFlicker" :isDate="generalSet.timeShowDate"/>
 
       <!-- 自定义输入框 -->
       <customInput
@@ -187,6 +187,8 @@ export default {
         searchHistory: true,
         // 时间显示闪烁
         timeDisplayFlicker: false,
+        // 时间显示日期
+        timeShowDate: true,
         // 初始化聚焦输入框
         initFocusInput: true,
         // 登录问候
@@ -223,6 +225,8 @@ export default {
         perferenceBg: 'static1',
         // 开始提示框
         startPopups: false,
+        // 自定义搜索引擎设置
+        customEngUrl: ''
       },
       appList: [
         {
@@ -506,7 +510,7 @@ export default {
 }
 </script>
 
-<style scoped>
-@import url('../../styles/icon.css');
-@import url('../../styles/custom-index.css');
+<style lang="scss" scoped>
+@import "../../styles/icon.css";
+@import "../../styles/custom-index.scss";
 </style>

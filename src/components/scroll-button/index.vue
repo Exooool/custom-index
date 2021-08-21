@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .switch {
   width: 36px;
   height: 22px;

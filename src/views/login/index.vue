@@ -212,7 +212,7 @@ export default {
 }
 </script>
 
-<style>
-@import url('//at.alicdn.com/t/font_2356752_b72qgbqioyv.css');
-@import url('../../styles/login.css');
+<style lang="scss" scoped>
+@import "//at.alicdn.com/t/font_2356752_b72qgbqioyv.css";
+@import "../../styles/login.scss";
 </style>

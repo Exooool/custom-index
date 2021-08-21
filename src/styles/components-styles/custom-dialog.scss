@@ -70,7 +70,7 @@
 }
 
 .custom-dialog .main::-webkit-scrollbar-thumb{
-  background-color: rgb(204, 204, 204,0.6);
+  background-color: rgba(204, 204, 204, 0.6);
 }
 
 /* subTitle副标题 */
@@ -259,7 +259,7 @@
 .imgaeInfo .subtitle{
   font-size: 14px;
   margin-top: 5px;
-  color: rgba(128, 128, 128);
+  color: rgba(128, 128, 128 , 0);
 }
 
 .imgaeInfo .selectIconBtn{
@@ -330,38 +330,90 @@
 /* 搜索引擎页样式 */
 .searchEngGroup{
   margin-bottom: 10px;
+
+  // 搜搜引擎每个Item样式
+  .searchEngGroupItem{
+    display: inline-block;
+    z-index: 10;
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: white;
+    box-shadow: 1px 2px 5px 1px whitesmoke;
+    position: relative;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #e4e4e4
+    }
+    
+    // 搜索引擎名字
+    .engName{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 14px;
+    }
+
+    // 搜索引擎地址
+    .engUrl{
+      position: absolute;
+      left: 130px;
+      font-size: 13px;
+    }
+
+    // 自定义搜索引擎
+    .customEngUrlInput{
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      left: 0%;
+      padding: 0px 10px;
+      top: 50%;
+      background-color: rgb(230, 230, 230);
+      border-radius: 5px;
+      box-shadow: 1px 2px 5px 1px whitesmoke;
+      transition: .2s ease-in-out;
+      transform: translateY(-50%);
+      
+
+      // 自定义搜索引擎输入框
+      input{
+        font-size: 13px;
+        padding: 10px 0px;
+        width: 230px;
+        background: none;
+      }
+    }
+
+  }
+
+  // 自定搜索引擎输入框展开样式
+  .customSearch .unfold{
+    // background-color: white;
+    padding: 25px 10px;
+    opacity: 1;
+    transform: translate(110px,-50%);
+  }
+
+  // 当搜索引擎被选择时样式
+  .urlItemMask{
+    background-color: #70c000 !important;
+    width: 150px;
+  }
+
+  
 }
 
-.searchEngGroupItem{
-  display: flex;
-  align-items: center;
-  padding: 10px 30px;
-  border-bottom: 2px solid rgb(223, 220, 220);
-  position: relative;
-  transition: all .2s ease-in-out;
-  cursor: pointer;
-}
 
-.searchEngGroupItem:hover{
-  background-color: rgba(21, 21, 21, 0.05);
-}
 
 /* .searchEngGroupItem .engName{
 
 } */
 
-.searchEngGroupItem .engUrl{
-  position: absolute;
-  left: 130px;
-  font-size: 13px;
-}
-
-.searchEngGroupItem .customEngUrl{
-  position: absolute;
-  left: 130px;
-  font-size: 13px;
-  background: none;
-}
 
 /* 菜单显示 */
 .box-visible {

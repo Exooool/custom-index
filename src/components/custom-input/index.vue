@@ -150,7 +150,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .custom-input-box {
   position: absolute;
   top: 100px;
@@ -182,7 +182,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   transition: all 0.15s ease-in-out;
-  box-shadow: rgb(0 0 0 / 20%) 0 0 10px;
+  box-shadow: rgba(0, 0, 0, .2) 0 0 10px;
   text-align: center;
   box-sizing: border-box;
   padding: 0 45px;
@@ -192,10 +192,12 @@ export default {
 
 .inputTipsBox{
   position: absolute;
-  background-color: rgb(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter:  blur(15px);
   top: 60px;
   left: 50%;
+  max-height: 40vh;
+  overflow-y: scroll;
   transform: translateX(-50%);
   border-radius: 5px;
   flex-direction: column;
@@ -205,6 +207,14 @@ export default {
   display: none;
 }
 
+/* 设置inputTipsBox的滚动条样式 */
+.inputTipsBox::-webkit-scrollbar{
+  width: 5px;
+}
+
+.inputTipsBox::-webkit-scrollbar-thumb{
+  background-color: rgba(204, 204, 204, 0.6);
+}
 
 
 .inputTipsBox span{
@@ -257,7 +267,6 @@ export default {
 }
 /* 盒子显示通用样式 */
 .box-visible {
-  position: relative;
   opacity: 1;
   transform: scale(1);
   visibility: visible;

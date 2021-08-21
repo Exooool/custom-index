@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .selectBox{
   width: 240px;
   position: relative;
@@ -102,7 +102,7 @@ export default {
   padding: 10px 0px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: rgb(0 0 0 / 20%) 0 0 10px;
+  box-shadow: rgba(0,0,0,.2) 0 0 10px;
   transition: all .2s ease-in-out;
   transform: translateY(-10px);
   opacity: 0;

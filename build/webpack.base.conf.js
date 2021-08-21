@@ -52,8 +52,8 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.scss$/,
-        loader: 'sass-loader!style-loader!css-loader',
+        test: / \.scss$ / ,
+        loaders: [ 'style' , 'css' , 'sass' ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

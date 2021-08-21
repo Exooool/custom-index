@@ -8,6 +8,9 @@
       ></i>
       <span class="title">基础设置</span>
       <div class="main">
+
+        <!-- 搜索栏与导航相关设置 -->
+
         <div class="subTitle">搜索和导航</div>
         <ul class="setGroup">
           <li class="setGroupItem">
@@ -18,9 +21,19 @@
             <span class="setCaption">搜索记录</span>
             <ScrollSwitch v-model="setGroup.searchHistory" @click="changeSetting"/>
           </li>
+          
+        </ul>
+
+        <!-- 时钟相关设置 -->
+        <div class="subTitle">时钟</div>
+        <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">时间显示闪烁</span>
             <ScrollSwitch v-model="setGroup.timeDisplayFlicker" @click="changeSetting"/>
+          </li>
+          <li class="setGroupItem">
+            <span class="setCaption">时间显示日期</span>
+            <ScrollSwitch v-model="setGroup.timeShowDate" @click="changeSetting"/>
           </li>
         </ul>
 
@@ -208,8 +221,8 @@ export default {
 }
 </script>
 
-<style>
-@import url('../../styles/components-styles/custom-dialog.css');
+<style lang="scss" scoped>
+@import "../../styles/components-styles/custom-dialog.scss";
 .regulation{
   width: 100%;
 }
