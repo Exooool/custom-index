@@ -12,10 +12,10 @@
         <ul class="searchEngGroup">
           <!-- urlItemMask样式表示当前引擎被选择时的li元素的样式 -->
           <li
-            :class="'searchEngGroupItem ' + (item1.engUrl == selectEngUrl ? 'urlItemMask':'')"
+            :class="'searchEngGroupItem ' + (item1.engUrl == engUrl ? 'urlItemMask':'')"
             v-for="(item1, i) in searchEngList[0]"
             :key="i"
-            @click.stop="engUrlChange(item1.engUrl)"
+            @click.stop="alterEngUrl(item1.engUrl)"
             :title="item1.engUrl"
           >
             <!-- 搜索引擎名字 -->
@@ -26,10 +26,10 @@
         <span class="subTitle">次搜索引擎</span>
         <ul class="searchEngGroup">
           <li
-            :class="'searchEngGroupItem ' + (item2.engUrl == selectEngUrl ? 'urlItemMask':'')"
+            :class="'searchEngGroupItem ' + (item2.engUrl == engUrl ? 'urlItemMask':'')"
             v-for="(item2, j) in searchEngList[1]"
             :key="j"
-            @click="engUrlChange(item2.engUrl)"
+            @click="alterEngUrl(item2.engUrl)"
             :title="item2.engUrl"
           >
             <!-- 搜索引擎名字 -->
@@ -52,9 +52,9 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import ScrollSwitch from '@/components/scroll-button'
 export default {
-  props: ['selectEngUrl'],
   data () {
     return {
       searchEngList: [
@@ -67,17 +67,17 @@ export default {
       
     }
   },
+  computed: {
+    ...mapState(['engUrl'])
+  },
   components: {
     ScrollSwitch
   },
   methods: {
+    ...mapMutations(['alterEngUrl']),
     closeDialog (e) {
       let dialog = e.target.dataset.dialog;
       document.getElementById(dialog).style = "opacity: 0;visibility: hidden;";
-    },
-    // 浏览器引擎设置
-    engUrlChange(engUrl){
-      this.$emit("changeEngUrl", engUrl);
     },
     // 展开自定义搜索引擎输入框
     unfoldInput(){
@@ -94,7 +94,7 @@ export default {
         this.$refs.customEngUrlInput.style="background-color:#FF4B2B";
       }else{
         this.$refs.customEngUrlInput.style="background-color:#70c000";
-        this.engUrlChange(engUrl);
+        this.alterEngUrl(engUrl);
         
       }
     }

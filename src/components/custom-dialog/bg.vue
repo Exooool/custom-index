@@ -36,7 +36,7 @@
         <div class="selectPitcureBox">
           <div
             class="selectPitcureItem"
-            v-for="(item, i) in staticImg"
+            v-for="(item, i) in defaultImgList"
             :key="i"
             @click="bgUrlChange($event)"
             :data-imgSrc="item.imgsrc"
@@ -56,7 +56,7 @@
         <div class="selectPitcureBox">
           <div
             class="selectPitcureItem"
-            v-for="(item, i) in dynamicImg"
+            v-for="(item, i) in dynamicImgList"
             :key="i"
             @click="bgUrlChange($event)"
             :data-imgSrc="item + '/video.mp4'"
@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ScrollSwitch from '@/components/scroll-button'
 export default {
   props: ['staticImg', 'current', 'dynamicImg'],
@@ -86,6 +87,9 @@ export default {
     return {
       cusBgUrl: ''
     }
+  },
+  computed: {
+    ...mapState(['defaultImgList', 'dynamicImgList'])
   },
   components: {
     ScrollSwitch

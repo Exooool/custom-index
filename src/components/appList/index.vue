@@ -4,7 +4,6 @@
       <div class="collect-list" ref="collectlist">
         <CollectItem
           v-for="(item, i) in appList"
-          :appList="appList"
           :appName="item.appName"
           :appIcon="item.appIcon"
           :bgColor="item.bgColor"
@@ -26,21 +25,26 @@
       
       </div>
       
-      <AddCollectItem :isvisible="addShow" @close="addShow=false" :appList="appList"/>
+      <AddCollectItem :isvisible="addShow" @close="addShow=false"/>
     </div>
     
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CollectItem from './collectItem'
 import AddCollectItem from './addCollectItem'
+
 export default {
-  props: ['appList','isvisible'],
+  props: ['isvisible'],
   data () {
     return {
        addShow: false
     }
+  },
+  computed: {
+    ...mapState(['appList'])
   },
   components: {
     CollectItem,
@@ -59,6 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .collect-box {
   position: absolute;
   width: 100%;
@@ -115,6 +120,7 @@ export default {
   transition: all 0.35s ease-in-out;
   cursor: pointer;
 }
+
 
 /* 盒子显示通用样式 */
 .box-visible {

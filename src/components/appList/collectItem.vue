@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['appName', 'bgColor', 'appIcon', 'href','iconColor','index','appList'],
+  props: ['appName', 'bgColor', 'appIcon', 'href','iconColor','index'],
   data () {
     return {
     }
@@ -31,8 +31,7 @@ export default {
       }else{
         let res = confirm("你确定要删除嘛");
         if(res===true){
-          this.appList.splice(this.index,1);
-          localStorage.setItem("appList", JSON.stringify(this.appList));
+          this.$store.commit('removeAppItem', this.index)
         }
       }
       
@@ -43,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .collect-item{
   position: relative;
   width: 90px;

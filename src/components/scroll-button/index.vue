@@ -1,7 +1,7 @@
 <template>
   <label class="switch">
     <!-- <input type="checkbox" v-model="switchState"  @change="switchChange()"/> -->
-    <input type="checkbox" :checked="value" @change="$emit('input', $event.target.checked)" />
+    <input type="checkbox" :checked="value" @change="$emit('change', $event.target.checked)" />
     <div class="switchColor"></div>
   </label>
 </template>

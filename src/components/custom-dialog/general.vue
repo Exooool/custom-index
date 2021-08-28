@@ -15,11 +15,11 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">自动清空搜索栏</span>
-            <ScrollSwitch v-model="setGroup.autoEmptyInput" @click="changeSetting" />
+            <ScrollSwitch :value="generalSet.autoEmptyInput" @change="changeSetting($event, 'autoEmptyInput')" />
           </li>
           <li class="setGroupItem">
             <span class="setCaption">搜索记录</span>
-            <ScrollSwitch v-model="setGroup.searchHistory" @click="changeSetting"/>
+            <ScrollSwitch :value="generalSet.searchHistory" @change="changeSetting($event, 'searchHistory')"/>
           </li>
           
         </ul>
@@ -29,11 +29,11 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">时间显示闪烁</span>
-            <ScrollSwitch v-model="setGroup.timeDisplayFlicker" @click="changeSetting"/>
+            <ScrollSwitch :value="generalSet.timeDisplayFlicker" @change="changeSetting($event, 'timeDisplayFlicker')"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">时间显示日期</span>
-            <ScrollSwitch v-model="setGroup.timeShowDate" @click="changeSetting"/>
+            <ScrollSwitch :value="generalSet.timeShowDate" @change="changeSetting($event, 'timeShowDate')"/>
           </li>
         </ul>
 
@@ -41,10 +41,11 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">初始化加载时自动聚焦到搜索栏</span>
-            <ScrollSwitch v-model="setGroup.initFocusInput" @click="changeSetting"/>
+            <ScrollSwitch :value="generalSet.initFocusInput" @change="changeSetting($event, 'initFocusInput')"/>
           </li>
           <li class="setGroupItem">
-            <span class="setCaption">登陆有显示问候</span> <ScrollSwitch v-model="setGroup.loginGreet" @click="changeSetting"/>
+            <span class="setCaption">登陆有显示问候</span>
+            <ScrollSwitch :value="generalSet.loginGreet" @change="changeSetting($event, 'loginGreet')"/>
           </li>
         </ul>
 
@@ -52,15 +53,15 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">流畅模式</span>
-            <ScrollSwitch v-model="setGroup.flowPattern" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.flowPattern" @change="changeSetting($event, 'flowPattern')"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">减弱动态效果</span>
-            <ScrollSwitch v-model="setGroup.weakDynamic" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.weakDynamic" @change="changeSetting($event, 'weakDynamic')"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">为遮罩层应用毛玻璃效果</span>
-            <ScrollSwitch v-model="setGroup.applyFrostedGlass" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.applyFrostedGlass" @change="changeSetting($event, 'applyFrostedGlass')"/>
           </li>
         </ul>
 
@@ -74,7 +75,7 @@
           </li>
           <li class="setGroupItem">
             <span class="setCaption">深色主题</span>
-            <ScrollSwitch v-model="setGroup.darkTheme" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.darkTheme" @change="changeSetting($event, 'darkTheme')"/>
           </li>
         </ul>
 
@@ -82,13 +83,13 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">启用自定义样式</span>
-            <ScrollSwitch v-model="setGroup.isCustomStyle" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.isCustomStyle" @change="changeSetting"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">窗口透明度</span>
             <div class="regulation">
               <span>{{slidervalue}}</span>
-              <Slider v-model="slidervalue" />
+              <Slider :value="slidervalue" />
             </div>
           </li>
           <li class="setGroupItem">
@@ -116,16 +117,16 @@
         <ul class="setGroup">
           <li class="setGroupItem">
             <span class="setCaption">同步设置</span>
-            <ScrollSwitch v-model="setGroup.synchronization" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.synchronization" @change="changeSetting($event, 'synchronization')"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">名言推荐</span>
-            <ScrollSwitch v-model="setGroup.wisdom" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.wisdom" @change="changeSetting($event, 'wisdom')"/>
           </li>
           <li class="setGroupItem">
             <span class="setCaption">天气</span>
             <span class="setComment">开启后，若没有反应，请刷新始页方可生效。</span>
-            <ScrollSwitch v-model="setGroup.weather" @click="changeSetting()"/>
+            <ScrollSwitch :value="generalSet.weather" @change="changeSetting($event, 'weather')"/>
           </li>
         </ul>
 
@@ -140,6 +141,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ScrollSwitch from '@/components/scroll-button'
 import Slider from '@/components/slider'
 import Select from '@/components/select'
@@ -157,14 +159,23 @@ export default {
     Slider,
     Select
   },
+  computed: {
+    ...mapState(['generalSet'])
+  },
   methods: {
     closeDialog (e) {
       let dialog = e.target.dataset.dialog
       document.getElementById(dialog).style = "opacity: 0;visibility: hidden;"
     },
     // 将改变的值传回到最外层父级中
-    changeSetting(){
-      this.$emit("changeSet", this.setGroup)
+    changeSetting(value, name){
+      // this.$emit("changeSet", this.setGroup)
+      //  
+      const param ={
+        indexName: name, 
+        indexValue: value
+      }
+      this.$store.commit('alterGeneralSet', param)
     },
     resetSetting(){
       let defaultGeneralSet = {
@@ -208,12 +219,10 @@ export default {
         fontStyle: 'default'
       };
       let isconfirm = confirm("你确定要清除本地缓存并将设置项还原");
-      console.log(isconfirm);
+      // console.log(isconfirm);
       if(isconfirm){
-        // 将本地缓存设为默认
-        localStorage.setItem("generalSet", JSON.stringify(defaultGeneralSet));
-        // 更改页面变量为默认
-        this.$emit("changeSet", defaultGeneralSet);
+        // 重置
+        this.$store.commit('restoreGeneralSet', defaultGeneralSet);
       }
       
     }

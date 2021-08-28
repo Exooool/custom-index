@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  props: ['isvisible','appList'],
+  props: ['isvisible'],
   data () {
     return {
       // true表示点击后 addWeb()可执行
@@ -52,18 +52,18 @@ export default {
     addWeb(){
       if(this.addWebFlag){
         this.addWebFlag=false;
-        let webName = this.$refs.webName;
-        let webUrl = this.$refs.webUrl;
-        if(webName.value===""||webUrl.value===""){
+        let webName = this.$refs.webName.value;
+        let webUrl = this.$refs.webUrl.value;
+        if(webName===""||webUrl===""){
           alert("输入请不要为空！")
         }else{
+          // 创建添加的网站数据到appList中
           let arry = {
-            appName: webName.value,
-            href: webUrl.value
-            };
-          this.appList.push(arry);
-          localStorage.setItem("appList", JSON.stringify(this.appList));
-          console.log(this.appList);
+            appName: webName,
+            href: webUrl
+          };
+          console.log(this.$store.state.appList)
+          this.$store.commit('addAppItem', arry)
           this.close();
           
         }

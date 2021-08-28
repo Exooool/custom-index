@@ -31,8 +31,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  props: ['isfocus','isvisible','engine','autoEmptyInput','issearchHistory'],
+  props: ['isvisible'],
   data () {
     return {
        // 输入框值
@@ -48,6 +49,9 @@ export default {
         this.inputAITips()
       }
     }
+  },
+  computed: {
+    ...mapGetters(['isfocus','engine','autoEmptyInput','issearchHistory'])
   },
   methods: {
     // 搜索引擎

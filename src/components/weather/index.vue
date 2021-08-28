@@ -1,5 +1,5 @@
 <template>
-  <div class="weatherBoxboth" :style="[isweather ? 'display:none':'display:block']">
+  <div class="weatherBoxboth" :style="(isweather ? 'display:block':'display:none')">
     <div class="weatherBoxMini">
       <span class="regionName">{{ weatherBaseList.city }}</span>
       <i :class="'iconfont ' + weatherIconComp(weatherBaseList.weather)"></i>
@@ -7,7 +7,7 @@
     </div>
 
     <!-- 天气弹窗 -->
-    <div class="weatherBox" :style="[isweather ? 'display:none':'display:block']">
+    <div class="weatherBox" :style="(isweather ? 'display:block':'display:none')">
       <div class="regionTab">
         <span class="regionName">{{ weatherBaseList.city }}</span>
         <span class="temperature">{{ weatherBaseList.temperature }}℃</span>

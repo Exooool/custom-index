@@ -6,14 +6,17 @@
 </template>
 
 <script> 
+import { mapGetters } from 'vuex'
 export default {
-  props:['isFlicker','isDate'],
   data () {
     return {
       timer: '',
       currentTime: '00:00',
       currentDate: '',
     }
+  },
+  computed: {
+    ...mapGetters(['isFlicker','isDate'])
   },
   methods: {
     appendZero (obj) {
