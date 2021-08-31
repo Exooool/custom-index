@@ -14,8 +14,7 @@
         />
 
         <label
-          class="collect-item"
-          style="background: rgba(255, 255, 255, 0.37)"
+          class="collect-item collect-item-add"
           @click="showAddDialog()"
         >
           <i
@@ -93,6 +92,15 @@ export default {
   border-radius: 10px;
   transition: all 0.35s ease-in-out;
   overflow-y: overlay;
+
+  // 设置添加item的按钮的样式
+  .collect-item-add{
+    background-color: $bg-w-alpha;
+
+    &:hover{
+      background-color: $bg-w-hover-alpha !important;
+    }
+  }
 }
 
 .collect-list::-webkit-scrollbar {

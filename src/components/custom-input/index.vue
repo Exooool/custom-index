@@ -177,7 +177,8 @@ export default {
 
 .custom-input {
   position: absolute;
-  background-color: rgb(255, 255, 255);
+  background-color: $bg-w-pure;
+  color: $bg-b-pure;
   border-radius: 5px;
   font-size: 14px;
   width: 220px;
@@ -258,7 +259,7 @@ export default {
 
 .custom-input-box:hover .custom-input,
 .custom-input:focus {
-  background-color: rgb(255, 255, 255);
+  background-color: $bg-w-pure;
   backdrop-filter:  blur(0px);
   /* box-shadow: 0 4px 8px 0 rgb(255, 255, 255, 0.5); */
   width: 480px;

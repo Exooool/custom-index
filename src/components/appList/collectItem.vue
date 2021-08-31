@@ -1,7 +1,6 @@
 <template>
   <label
     class="collect-item"
-    :style="'background-color:' + bgColor"
     @click="toWebsite()"
     @click.right="showEdit()"
   >
@@ -47,7 +46,7 @@ export default {
   position: relative;
   width: 90px;
   height: 90px;
-  background-color: #dae2f8;
+  background-color: $bg-w-pure;
   color: #dae2f8;
   border-radius: 15px;
   display: inline-block;
@@ -58,8 +57,10 @@ export default {
   transition: all .05s ease-in-out;
 }
 
+
+
 .collect-item:hover{
-  background-color: rgb(206, 206, 206) !important;
+  background-color: $bg-w-hover !important;
 }
 
 .collect-icon {

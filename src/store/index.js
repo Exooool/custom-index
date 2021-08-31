@@ -10,6 +10,8 @@ export default new Vuex.Store({
     // 搜索引擎地址
     engUrl: 'https://www.baidu.com/s?ie=utf-8&word=',
     generalSet: {
+      // 主题颜色
+      themeColor: 'green',
       // 自动清空搜索框
       autoEmptyInput: true,
       // 搜索记录
@@ -134,7 +136,18 @@ export default new Vuex.Store({
     // Bg的getter数据
     perferenceBg: state => state.generalSet.perferenceBg,
     // 天气数据
-    isWeather: state => state.generalSet.weather
+    isWeather: state => state.generalSet.weather,
+    // 深色主题
+    darkTheme: state => state.generalSet.darkTheme,
+    // 主题颜色输出css变量来改变scss变量的值
+    themeColor: state => {
+      const color = state.generalSet.themeColor;
+      if(color === 'green')  return '#70c000';
+      else if(color === 'cyanblue') return '#274a78';
+      else if(color === 'purple') return '#b8b5ff';
+      else if(color === 'orange') return '#f27121';
+      else if(color === 'yellow') return '#ffd900';
+    },
   },
   mutations: {
     // 初始化localStorage通用设置
@@ -177,7 +190,7 @@ export default new Vuex.Store({
     // 修改engUrl
     alterEngUrl(state, url){
       state.engUrl = url;
-    }
+    },
   },
   actions: {
       

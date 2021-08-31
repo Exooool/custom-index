@@ -1,9 +1,11 @@
 <template>
   <!-- @click.right监听右键点击事件并切换appList和custom-input -->
   <div
-    class="custom-box"
+    id="custom-box"
+    :class="'custom-box '+ (darkTheme ? 'dark':'')"
     @click="mouseclick($event)"
     @click.right="collectListSwitch($event)"
+    :style="'--theme-color:'+ themeColor "
   >
     <video
       ref="dynamicWallPaper"
@@ -47,7 +49,7 @@
 
     <!-- 自定义弹窗 -->
     <!-- 通过设置 -->
-    <General :themeColor="themeColor" />
+    <General />
     <!-- 搜索引擎设置 -->
     <Search />
     <!-- 壁纸设置 -->
@@ -150,11 +152,6 @@ import todoList from "@/components/todoList";
 export default {
   data() {
     return {
-      themeColor: {
-        bg: "white",
-        ft: "black",
-        sbg: "rgb(233, 233, 233)"
-      },
       collectBox: false,
       isClick: true,
       // bgUrl: 'assets/custom-img/pexelsImg/pexels3.jpg',
@@ -179,21 +176,9 @@ export default {
     todoList
   },
   computed: {
-    ...mapGetters(["perferenceBg", "isWeather"]),
-    ...mapState(["defaultImgList", "dynamicImgList"])
+    ...mapGetters(['perferenceBg', 'isWeather', 'darkTheme', 'themeColor']),
+    ...mapState(['defaultImgList', 'dynamicImgList'])
   },
-  // watch: {
-  //   generalSet: {
-  //     deep: true,
-  //     handler: function(val) {
-  //       // console.log('generalSet的值发生改变')
-  //       // console.log(val)
-  //       localStorage.setItem('generalSet', JSON.stringify(this.generalSet))
-  //       // 数值改变执行同步函数
-  //       // this.syncSetting()
-  //     }
-  //   }
-  // },
   methods: {
     // 测试
     // mt(e) {
@@ -304,20 +289,14 @@ export default {
       // console.log('点击右键')
       if (
         this.collectBox == false &&
-        (temp == "custom-box" ||
-          temp == "collect-list" ||
-          temp == "custom-main" ||
-          temp == "collect-box")
+        (temp !== 'custom-cover' && temp !== 'custom-dialog')
       ) {
         this.collectBox = true;
         this.customSettingMenu = 0;
         this.customUserMenu = 0;
       } else if (
         this.collectBox == true &&
-        (temp == "custom-box" ||
-          temp == "collect-list" ||
-          temp == "custom-main" ||
-          temp == "collect-box")
+        (temp !== 'custom-cover' && temp !== 'custom-dialog')
       ) {
         this.collectBox = false;
         this.customSettingMenu = 0;

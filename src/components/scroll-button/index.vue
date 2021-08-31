@@ -56,7 +56,8 @@ export default {
 .switch input:checked {
   left: 17px;
 }
+// theme-color为scss中的变量
 input:checked + .switchColor {
-  background-color: #70c000;
+  background-color: $theme-color;
 }
 </style>

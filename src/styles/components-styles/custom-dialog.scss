@@ -1,19 +1,6 @@
-:root{
-  --bg-w-pure: rgb(255, 255, 255);
-  --bg-w-235: rgb(235,235,235);
-  --theme-color-green: #70c000;
-  --theme-color-cyanblue:#274a78;
-  --theme-color-purple: #b8b5ff;
-  --theme-color-darkpurple:#7868e6;
-  --theme-color-orange: #F27121;
-  --theme-color-yellow: #ffd900;
-  --theme-color-pink: #eaafc8;
-  --theme-color-red: #FF4B2B;
-  --theme-color-skyblue: #2ca9e1;
-  --theme-color-moonlight: #eaf4fc;
-  --theme-color-tea: #965042;
-  --theme-color: rgb(255, 255, 255);
-  --theme-color-font: rgb(0, 0, 0);
+// 设置弹窗的字体颜色以适应黑暗模式
+*{
+  color: $font-color !important;
 }
 
 /* 弹窗 */
@@ -22,7 +9,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   width: 100%;
-  transition: all .2s ease-in-out;
+  transition: .2s ease-in-out;
   opacity: 0;
   z-index: 1;
   visibility: hidden;
@@ -34,7 +21,7 @@
   top: calc(50% - 250px);
   left: calc(50% - 300px);
   border-radius: 15px;
-  background-color: white;
+  background-color: $bg-w-pure;
   position: absolute;
   /* padding: 40px 70px; */
 }
@@ -44,6 +31,7 @@
   position: relative;
   top: 40px;
   left: 70px;
+  transition: .25s;
 }
 
 .custom-dialog .dialog-delete{
@@ -79,11 +67,12 @@
   font-weight: bold;
   margin-left: 10px;
   padding-bottom: 5px;
+  transition: .25s;
 }
 
 .custom-dialog .setGroup{
   position: relative;
-  background-color: rgb(233, 233, 233);
+  background-color: $bg-w-233;
   border-radius: 5px;
   margin-bottom: 10px;
   padding-top: 20px;
@@ -111,6 +100,7 @@
   display: block;
   font-size: 11px;
   width: calc(100% - 60px);
+  transition: .25s;
 }
 
 /* 主题颜色选项 */
@@ -119,25 +109,47 @@
   top: 0;
   right: 0;
   height: 25px;
+
+  #green{
+    background-color: $theme-color-green;
+  }
+
+  #cyanblue{
+    background-color: $theme-color-cyanblue;
+  }
+
+  #purple{
+    background-color: $theme-color-purple;
+  }
+
+  #orange{
+    background-color: $theme-color-orange;
+  }
+
+  #yellow{
+    background-color: $theme-color-yellow;
+  }
+
+  .colorBoxItem{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0px 5px ;
+    border-radius: 50%;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+    
+    &:hover{
+      transform: scale(1.5);
+    }
+  } 
+
+  .colorBoxItemChecked{
+    box-shadow: inset 2px 2px 2px black;
+  }
 }
 
-.colorBox .colorBoxItem{
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  margin: 0px 5px ;
-  border-radius: 50%;
-  transition: all .1s ease-in-out;
-  cursor: pointer;
-}
 
-.colorBoxItem:hover{
-  transform: scale(1.5);
-}
-
-.colorBox .colorBoxItemChecked{
-  border: solid 1px white;
-}
 
 .resetBox{
   position: relative;
@@ -145,7 +157,7 @@
 
 .resetBox .resetBtn{
   padding: 0px 15px;
-  background-color: rgb(200, 200, 200);
+  background-color: $bg-b-alpha;
   border-radius: 5px;
   height: 40px;
   width: 70px;
@@ -167,12 +179,7 @@
 
 } */
 
-.setBox .setInfo{
-  color: grey;
-  font-size: 12px;
-  width: 100%;
-  margin: 10px 5px;
-}
+
 
 
 /* 添加网址弹窗 */
@@ -339,14 +346,14 @@
     width: 100px;
     border-radius: 5px;
     margin: 5px;
-    background-color: white;
-    box-shadow: 1px 2px 5px 1px whitesmoke;
+    background-color: $bg-w-233;
+    box-shadow: 1px 2px 5px 1px $bg-w-233;
     position: relative;
     transition: all .2s ease-in-out;
     cursor: pointer;
 
     &:hover{
-      background-color: #e4e4e4
+      background-color: $bg-w-hover;
     }
     
     // 搜索引擎名字

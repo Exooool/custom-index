@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   padding: 0;
   margin: 0;
@@ -71,4 +71,5 @@ textarea {
   left: 0;
   overflow: hidden;
 }
+
 </style>
